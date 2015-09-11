@@ -41,11 +41,17 @@ function getHtmlFooter(){
             return('</body>'
             +'</html>');
 }
+
 function start() {
 
-http.createServer( onRequest ).listen(8080, '127.0.0.1');
-
-console.log('Server running at http://127.0.0.1:8080/');
+    var server = http.createServer();
+    console.log('Server running at http://127.0.0.1:8080/');
+    server.on('request', onRequest);
+    server.on('close', function(){
+        console.log('server closing bye bye');
+    });
+    server.listen(8080,'127.0.0.1');
+    server.close();
 
 }
 
