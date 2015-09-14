@@ -1,6 +1,7 @@
 var express = require( 'express');
 var app = express();
-app.get('/', function( req, res){
+var welcomePaths = ['/', '/index*'];
+app.get(welcomePaths, function( req, res){
     res.sendFile(__dirname+'/app/first.html');
 });
 app.use(function( req, res){
