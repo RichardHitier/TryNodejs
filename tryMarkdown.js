@@ -1,3 +1,5 @@
 var markdown = require('markdown').markdown;
+var fs = require('fs');
 
-console.log( markdown.toHTML("**This is strong**"));
+var readmeStr = fs.readFileSync('README.md', 'UTF8');
+console.log( markdown.toHTML(readmeStr));
